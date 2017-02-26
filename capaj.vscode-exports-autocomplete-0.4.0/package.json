@@ -1,0 +1,109 @@
+{
+	"name": "vscode-exports-autocomplete",
+	"displayName": "exports autocomplete",
+	"description": "autocompletes javascript module exports from your project",
+	"version": "0.4.0",
+	"publisher": "capaj",
+	"engines": {
+		"vscode": "^1.5.0"
+	},
+	"galleryBanner": {
+		"color": "#f5da55",
+		"theme": "dark"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"javascript",
+		"modules",
+		"imports",
+		"exports",
+		"auto import"
+	],
+	"icon": "images/icon.png",
+	"activationEvents": [
+		"onLanguage:javascript",
+		"onLanguage:javascriptreact"
+	],
+	"main": "./bootstrap",
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "vscode-exports-autocomplete",
+			"properties": {
+				"vscode-exports-autocomplete.cacheSizeLimit": {
+					"type": "string",
+					"default": "25MB",
+					"description": "size limit for the cache of parsed exports, shared among all projects"
+				},
+				"vscode-exports-autocomplete.indentationOverride": {
+					"type": "string",
+					"default": null,
+					"description": "if truthy, generated import statements will be indented using this string"
+				},
+				"vscode-exports-autocomplete.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "it might be useful to disable when better performance is higher priority"
+				},
+				"vscode-exports-autocomplete.enableNpmDependencies": {
+					"type": "boolean",
+					"default": true,
+					"description": "set this to false when you're annoyed by the stuff you get from your npm modules"
+				},
+				"vscode-exports-autocomplete.quoteCharOverride": {
+					"type": "string",
+					"default": null,
+					"description": "this allows to override the import style and force the imports to use this string as quotes"
+				}
+			}
+		}
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/capaj/vscode-exports-autocomplete.git"
+	},
+	"author": "capajj@gmail.com",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/capaj/vscode-exports-autocomplete/issues"
+	},
+	"homepage": "https://github.com/capaj/vscode-exports-autocomplete#readme",
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"pretest": "standard",
+		"test": "node ./node_modules/vscode/bin/test && ava"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.32",
+		"@types/node": "^7.0.0",
+		"ava": "^0.17.0",
+		"mocha": "^3.2.0",
+		"standard": "^8.6.0",
+		"typescript": "^2.0.3",
+		"vscode": "^1.0.0"
+	},
+	"ava": {
+		"files": [
+			"lib/**/*.spec.js"
+		]
+	},
+	"dependencies": {
+		"babel-traverse": "^6.20.0",
+		"babylon": "^6.14.1",
+		"co": "^4.6.0",
+		"get-exports-from-file": "^0.4.3",
+		"jest-changed-files": "^17.0.2",
+		"keep-it-small": "^0.1.0",
+		"klaw": "^1.3.1",
+		"mkdirp": "^0.5.1",
+		"mock-require": "^2.0.1",
+		"mz": "^2.6.0"
+	},
+	"__metadata": {
+		"id": "9a466d14-cbfa-431e-8ea8-71fc8cfc8148",
+		"publisherId": "fdb4c3bc-a885-4352-90e6-4c9a31d5d681",
+		"publisherDisplayName": "capaj"
+	}
+}
